@@ -14,6 +14,10 @@
     background-color: #f1f5ef;
 }
 
+.bg-color-work-history {
+    background-color: #f1f7ff;;
+}
+
 .ui-menu-color-home {
     background-color: #ff7604;
 }
@@ -262,4 +266,68 @@ footer {
 .personal-info-item .value {
     position: relative;
     width: 60%;
+}
+
+/* -- Skills -- */
+
+.progress {
+    position: relative;
+    height: 25px;
+    margin-bottom: 4px;
+}
+
+.progress-type {
+    position: absolute;
+    height: 100%;
+    left: 0px;
+    font-weight: 400;
+    padding: 12px 10px 1px;
+    color: #fafafa;
+    background-color: rgba(25, 25, 25, .5);
+}
+
+.progress-section {
+    margin: 40px 5px;
+}
+
+/* -- Work History -- */
+
+.timeline-item {
+    position: relative;
+    padding: 4em 2em 0 2em;
+    border-left: 1px solid;
+}
+
+.timeline-item p {
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-item::before {
+    content: attr(data-dates);
+    position: absolute;
+    left: 2.5em;
+    top: 3em;
+    display: block;
+    font-family: "Exo", sans-serif;
+    font-weight: 500;
+    font-size: .8em;
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    display: block;
+    top: 2.4em;
+    left: -6px;
+    border-radius: 12px;
+    background-color: #799fd1;
+}
+
+.history-items {
+    margin-bottom: 30px;
 }
