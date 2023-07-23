@@ -34,6 +34,14 @@
     background-color: #cc7dc8;
 }
 
+.ui-menu-color-github {
+    background-color: #8889c0;
+}
+
+.ui-menu-color-interests {
+    background-color: #ef8176;
+}
+
 .ui-menu-color-download {
     background-color: #00bf63;
 }
@@ -158,7 +166,7 @@ header {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 1.7px;
 }
 
 /* -- Hover.css -- */
@@ -357,6 +365,12 @@ button[type="submit"] {
     color: #000;
     background-color: #7ed957;
     border: none;
+}
+
+/* -- Interests -- */
+
+div#map {
+    min-height: 360px;
 }
 
 /* -- Media Queries -- */
