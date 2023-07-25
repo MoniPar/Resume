@@ -1,3 +1,4 @@
+// display user data on screen
 function userInformationHTML(user) {  // user is the object returned from GitHub API
     return `
     <h2>${user.name}
@@ -13,6 +14,26 @@ function userInformationHTML(user) {  // user is the object returned from GitHub
         </div>
         <p>Followers: ${user.followers} - Following: ${user.following} <br> Repos: ${user.public_repos}</p>
     </div>`;
+}
+
+// display repo data on screen
+function repoInformationHTML(repos) {  // repos object returned as an array from GitHub API
+    // check if repo is empty
+    if (repos.length == 0) {
+        return `<div class="clearfix repo-list">No repos!</div>`;
+    }
+    // iterate through array and return repo link and name
+    var listItemsHTML = repos.map(function(repo) {
+        return `<li>
+            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+        </li>`;
+    });
+
+    // use the join method on the array returned and add a new line
+    return `<div class="clearfix repo-list">
+        <p><strong>Repo List:</strong></p>
+        <ul>${listItemsHTML.join("\n")}</ul>
+    </div>`
 }
 
 function fetchGitHubInformation(event) {
@@ -32,13 +53,16 @@ function fetchGitHubInformation(event) {
 
     $.when(
         // we get a response from the GitHub API
-        $.getJSON(`https://api.github.com/users/${username}`)
+        $.getJSON(`https://api.github.com/users/${username}`),
+        $.getJSON(`https://api.github.com/users/${username}/repos`)
     ).then (
         // display it in the gh-user-data div
-        function(response) {
-            var userData = response;
+        function(firstResponse, secondResponse) {
+            var userData = firstResponse[0];
+            var repoData = secondResponse[0];
             // select the gh-user-data div and set the HTML to the results of the userInformationHTML func
-            $("#gh-user-data").html(userInformationHTML(userData)); 
+            $("#gh-user-data").html(userInformationHTML(userData));
+            $("#gh-repo-data").html(repoInformationHTML(repoData)); 
         }, function(errorResponse) {  // func for if the prev doesn't work out
             if (errorResponse.status === 404) {
                 // select div and set HTML to an error message
