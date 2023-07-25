@@ -37,6 +37,10 @@ function repoInformationHTML(repos) {  // repos object returned as an array from
 }
 
 function fetchGitHubInformation(event) {
+    // clear displayed data when text box is empty
+    $("#gh-user-data").html("");
+    $("#gh-repo-data").html("");
+
     // create a variable to hold the username typed in the text field
     var username = $("#gh-username").val();
     // add placeholder text to the text field
@@ -78,3 +82,6 @@ function fetchGitHubInformation(event) {
         }
     )
 }
+
+// execute the fetchGitHubInformation function when the DOM is fully loaded
+$(document).ready(fetchGitHubInformation);
